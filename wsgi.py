@@ -16,7 +16,7 @@ def hello():
 
 
 @application.route("/json-test")
-def json_test:
+def json_test():
     return jsonify(
         {
             "username": "admin",
