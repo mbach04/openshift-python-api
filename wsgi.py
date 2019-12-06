@@ -14,6 +14,18 @@ json_data = {
 def hello():
     return "Hello World!"
 
+@application.route("/health")
+def health():
+    return "OK"
+
+@application.route("/limited-endpoint")
+def limit():
+    return "limited endpoint"
+
+@application.route("ping")
+def ping():
+    return "pong"
+
 
 @application.route("/json-test")
 def json_test():
