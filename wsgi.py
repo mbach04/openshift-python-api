@@ -22,7 +22,7 @@ def health():
 def limit():
     return "limited endpoint"
 
-@application.route("ping")
+@application.route("/ping")
 def ping():
     return "pong"
 
