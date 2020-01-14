@@ -10,6 +10,33 @@ json_data = {
     "id": 42
 }
 
+class InvalidUsage(Exception):
+    status_code = 400
+
+    def __init__(self, message, status_code=None, payload=None):
+        Exception.__init__(self)
+        self.message = message
+        if status_code is not None:
+            self.status_code = status_code
+        self.payload = payload
+
+    def to_dict(self):
+        rv = dict(self.payload or ())
+        rv['message'] = self.message
+        return rv
+
+@application.errorhandler(InvalidUsage)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
+
+@application.route('/400')
+def get_foo():
+    raise InvalidUsage('This view is gone', status_code=410)
+
+
+
 @application.route("/")
 def hello():
     return "Hello World!"
@@ -36,6 +63,7 @@ def json_test():
             "id": 42
         }
     )
+
 
 if __name__ == "__main__":
     application.run()
