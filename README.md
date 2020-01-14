@@ -20,7 +20,7 @@ To deploy this sample Python web application from the OpenShift web console, you
 
 The HTTPS URL of this code repository which should be supplied to the _Git Repository URL_ field when using _Add to project_ is:
 
-* https://github.com/OpenShiftDemos/os-sample-python.git
+* https://github.com/mbach04/openshift-python-api.git
 
 If using the ``oc`` command line tool instead of the OpenShift web console, to deploy this sample Python web application, you can run:
 
